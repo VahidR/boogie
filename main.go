@@ -1,5 +1,10 @@
 package main
 
+/**
+ * Created by vahid (@vahid_r)
+ * "Good Thoughts, Good Words, Good Deeds. --Zarathustra"
+ */
+
 import (
 	"bufio"
 	"fmt"
