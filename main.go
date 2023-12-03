@@ -3,10 +3,14 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"github.com/VahidR/boogie/boogie"
 	"os"
 )
 
 func main() {
+	lexerInChannel := make(chan string)
+	lexer := boogie.NewLexer(lexerInChannel)
+	go lexer.Run()
 	// an endless loop to interpret whatever users enter. A kind of REPL!
 	for {
 		// this is how we read from STDIN in golang
@@ -16,6 +20,6 @@ func main() {
 		if err != nil {
 			panic(err)
 		}
-		fmt.Println(text)
+		lexer.In <- text
 	}
 }
