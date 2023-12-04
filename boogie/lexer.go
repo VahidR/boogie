@@ -18,7 +18,7 @@ const (
 )
 
 type Lexer struct {
-	In             chan string // the channel that we use to read from STDIN
+	Input          chan string // the channel that we use to read from STDIN
 	currentChar    string
 	currentContext ContextState // the current state of the lexer
 	keywords       []string
@@ -26,9 +26,9 @@ type Lexer struct {
 }
 
 // NewLexer Constructor for the Lexer
-func NewLexer(in chan string) *Lexer {
+func NewLexer(input chan string) *Lexer {
 	return &Lexer{
-		In:             in,
+		Input:          input,
 		currentContext: START,
 		keywords:       []string{"QUIT"}, // the keywords that we want to recognize
 	}
@@ -37,7 +37,7 @@ func NewLexer(in chan string) *Lexer {
 // Run runs the lexer
 func (lexer *Lexer) Run() {
 	for {
-		lineOfCode := <-lexer.In
+		lineOfCode := <-lexer.Input
 		err := lexer.process(lineOfCode)
 		if err != nil {
 			panic(err)
@@ -61,8 +61,8 @@ func (lexer *Lexer) process(lineOfCode string) error {
 	return nil
 }
 
-func (lexer *Lexer) isStringInSlice(str string, list []string) bool {
-	for _, value := range list {
+func (lexer *Lexer) isStringInSlice(str string, stringList []string) bool {
+	for _, value := range stringList {
 		if value == strings.ToUpper(str) {
 			return true
 		}

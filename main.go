@@ -25,6 +25,6 @@ func main() {
 		if err != nil {
 			panic(err)
 		}
-		lexer.In <- text
+		lexer.Input <- text
 	}
 }
