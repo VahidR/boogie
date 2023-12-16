@@ -1,6 +1,6 @@
 package boogie
 
-import "fmt"
+import "github.com/davecgh/go-spew/spew"
 
 type Parser struct {
 	In chan Lexeme
@@ -15,6 +15,6 @@ func NewParser() *Parser {
 func (parser *Parser) Run() {
 	for {
 		lex := <-parser.In
-		fmt.Println(lex)
+		spew.Dump(lex)
 	}
 }
