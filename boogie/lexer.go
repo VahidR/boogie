@@ -17,8 +17,14 @@ const (
 	KEYWORD
 )
 
+type Lexeme struct {
+	Id  string
+	Val string
+}
+
 type Lexer struct {
 	Input          chan string // the channel that we use to read from STDIN
+	parser         *Parser
 	currentChar    string
 	currentContext ContextState // the current state of the lexer
 	keywords       []string
@@ -29,6 +35,7 @@ type Lexer struct {
 func NewLexer(input chan string) *Lexer {
 	return &Lexer{
 		Input:          input,
+		parser:         NewParser(),
 		currentContext: START,
 		keywords:       []string{"QUIT"}, // the keywords that we want to recognize
 	}
@@ -55,7 +62,7 @@ func (lexer *Lexer) process(lineOfCode string) error {
 				lexer.currentContext = KEYWORD
 			}
 		case KEYWORD:
-			// do something with the keyword
+			lexer.parser.In <- Lexeme{Id: "key", Val: "QUIT"}
 		}
 	}
 	return nil
