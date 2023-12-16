@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-// A State-Machine Enum
+// ContextState A State Enum
 type ContextState int
 
 const (
