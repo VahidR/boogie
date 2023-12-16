@@ -43,6 +43,7 @@ func NewLexer(input chan string) *Lexer {
 
 // Run runs the lexer
 func (lexer *Lexer) Run() {
+	go lexer.parser.Run()
 	for {
 		lineOfCode := <-lexer.Input
 		err := lexer.process(lineOfCode)
