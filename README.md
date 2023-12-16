@@ -8,8 +8,4 @@ from [Daniel Owen van Dommelen](https://github.com/TheApeMachine) very insightfu
 
 I am following the steps from his [YouTube videos](https://www.youtube.com/watch?v=Fe-lXdRJhyo), and hack through the content myself. 
 
-## How to Build and Run
-TBA
-
-## How to Test
-TBA
+**UPDATE**: This Video series stopped after the second episode. So this project is incomplete. 
