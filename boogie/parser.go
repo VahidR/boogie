@@ -12,6 +12,6 @@ func NewParser() *Parser {
 
 func (parser *Parser) Run() {
 	for {
-		lex := <-parser.In
+		// lex := <-parser.In
 	}
 }
