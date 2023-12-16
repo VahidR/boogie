@@ -1,5 +1,7 @@
 package boogie
 
+import "fmt"
+
 type Parser struct {
 	In chan Lexeme
 }
@@ -12,6 +14,7 @@ func NewParser() *Parser {
 
 func (parser *Parser) Run() {
 	for {
-		// lex := <-parser.In
+		lex := <-parser.In
+		fmt.Println(lex)
 	}
 }
